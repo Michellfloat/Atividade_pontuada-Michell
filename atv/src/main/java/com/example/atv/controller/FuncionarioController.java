@@ -18,33 +18,33 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.atv.model.FuncionarioModel;
 import com.example.atv.service.FuncionarioService;
 
-@RestController
-@RequestMapping("/funcionarios")
-public class FuncionarioController {
+@RestController /* Inserindo a camada de controle para Funcionarios */
+@RequestMapping("/funcionarios") /* Define o endpoint base para as operações relacionadas a funcionarios */
+public class FuncionarioController { /* Injetando a camada de serviço de Funcionarios para que o controlador possa chamar os métodos da camada de serviço e realizar as operações relacionadas aos funcionarios */
     
-    @Autowired
-    private FuncionarioService funcionarioService;
+    @Autowired /* Injetando a camada de serviço de Funcionarios */
+    private FuncionarioService funcionarioService; /* Injetando a camada de serviço de Funcionarios para que o controlador possa chamar os métodos da camada de serviço e realizar as operações relacionadas aos funcionarios */    
 
-    @GetMapping
-    public List<FuncionarioModel>listar(){
-       return funcionarioService.listarFuncionarios();
+    @GetMapping /* Método para listar todos os funcionarios */
+    public List<FuncionarioModel>listar(){ /* Retorna uma lista de todos os funcionarios cadastrados */
+       return funcionarioService.listarFuncionarios(); /* Chama o método listarFuncionarios da camada de serviço para obter a lista de funcionarios e retorna essa lista como resposta */
     }
 
-    @PostMapping
-    public ResponseEntity<Map<String,Object>>salvar(@RequestBody FuncionarioModel funcionario){
-        funcionarioService.salvarFuncionarios(funcionario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("mensagem","funcionario Cadastrado com sucesso!!"));
+    @PostMapping /* Método para salvar um funcionario */
+    public ResponseEntity<Map<String,Object>>salvar(@RequestBody FuncionarioModel funcionario){ /* Recebe os dados do funcionario no corpo da requisição e chama o método salvarFuncionarios da camada de serviço para salvar o funcionario no banco de dados */
+        funcionarioService.salvarFuncionarios(funcionario); /* Salva o funcionario no banco de dados usando a camada de serviço */
+        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("mensagem","funcionario Cadastrado com sucesso!!")); /* Retorna uma resposta HTTP com status 201 (Created) e uma mensagem indicando que o funcionario foi cadastrado com sucesso */
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Map<String,Object>>atualizar(@PathVariable Long id,@RequestBody FuncionarioModel funcionario){
-        funcionarioService.atualizarFuncionarios(id, funcionario);
-        return ResponseEntity.status(HttpStatus.OK).body(Map.of("mensagem","Dados do funcionario alterados com sucesso!!"));
+    @PutMapping("/{id}") /* Método para atualizar um funcionario, recebe o ID do funcionario a ser atualizado como parte da URL e os dados atualizados do funcionario no corpo da requisição */
+    public ResponseEntity<Map<String,Object>>atualizar(@PathVariable Long id,@RequestBody FuncionarioModel funcionario){ /* Chama o método atualizarFuncionarios da camada de serviço para atualizar os dados do funcionario no banco de dados usando o ID fornecido e os dados atualizados do funcionario */
+        funcionarioService.atualizarFuncionarios(id, funcionario); /* Atualiza os dados do funcionario no banco de dados usando a camada de serviço */
+        return ResponseEntity.status(HttpStatus.OK).body(Map.of("mensagem","Dados do funcionario alterados com sucesso!!")); /* Retorna uma resposta HTTP com status 200 (OK) e uma mensagem indicando que os dados do funcionario foram alterados com sucesso */
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Map<String,Object>>deletar(@PathVariable Long id){
-        funcionarioService.deletarFuncionarios(id);
-        return ResponseEntity.status(HttpStatus.OK).body(Map.of("mensagem","funcionario excluído com sucesso!!"));
+    @DeleteMapping("/{id}") /* Método para deletar um funcionario, recebe o ID do funcionario a ser deletado como parte da URL */
+    public ResponseEntity<Map<String,Object>>deletar(@PathVariable Long id){ /* Chama o método deletarFuncionarios da camada de serviço para deletar o funcionario do banco de dados usando o ID fornecido */
+        funcionarioService.deletarFuncionarios(id); /* Deleta o funcionario do banco de dados usando a camada de serviço */
+        return ResponseEntity.status(HttpStatus.OK).body(Map.of("mensagem","funcionario excluído com sucesso!!")); /* Retorna uma resposta HTTP com status 200 (OK) e uma mensagem indicando que o funcionario foi excluído com sucesso */
     }
 }

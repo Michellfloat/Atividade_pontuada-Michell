@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.example.atv.model.FuncionarioModel;
 
 
-@Repository
+@Repository /*Inserindo o repositório para Funcionarios */
 public interface FuncionarioRepository extends JpaRepository<FuncionarioModel,Long>{
-    Optional<FuncionarioModel>findByEmail(String email);
+    Optional<FuncionarioModel>findByEmail(String email); /* Método para encontrar um funcionario pelo email */
 }

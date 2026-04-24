@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.example.atv.model.ClienteModel;
 
 
-@Repository
+@Repository /*Inserindo o repositório para Clientes */
 public interface ClienteRepository extends JpaRepository<ClienteModel,Long>{
-    Optional<ClienteModel>findByEmail(String email);
+    Optional<ClienteModel>findByEmail(String email); /* Método para encontrar um cliente pelo email */
 }

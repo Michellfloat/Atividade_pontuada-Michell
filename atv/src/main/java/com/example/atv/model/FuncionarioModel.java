@@ -1,5 +1,6 @@
 package com.example.atv.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +13,7 @@ import jakarta.persistence.Table;
 public class FuncionarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; /* ID do funcionario */
 
     private String nome;
     
@@ -21,10 +22,13 @@ public class FuncionarioModel {
     private String dataNascimento;
     private String setor;
     private double salario;
+
+    @Column(unique = true, nullable = false)
     private String email;
     private String telefone;
     private String endereco;
     
+    /* Construtores */
     public FuncionarioModel() {
     }
 
@@ -42,6 +46,7 @@ public class FuncionarioModel {
         this.endereco = endereco;
     }
 
+    /* Getters e Setters */
     public Long getId() {
         return id;
     }

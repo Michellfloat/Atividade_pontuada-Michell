@@ -1,5 +1,6 @@
 package com.example.atv.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,14 +14,17 @@ import jakarta.persistence.Table;
 public class ProdutoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;    /* ID do produto */
 
     private String nome;
+
+    @Column(unique = true, nullable = false)
     private String lote;
     private String validade;
     private String categoria;
     private int quantidade;
     
+    /* Construtores */
     public ProdutoModel() {
     }
 
@@ -33,6 +37,7 @@ public class ProdutoModel {
         this.quantidade = quantidade;
     }
 
+    /* Getters e Setters */
     public Long getId() {
         return id;
     }

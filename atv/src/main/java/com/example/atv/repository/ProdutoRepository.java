@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.example.atv.model.ProdutoModel;
 
 
-@Repository
+@Repository /*Inserindo o repositório para Produtos */
 public interface ProdutoRepository extends JpaRepository<ProdutoModel,Long>{
-    Optional<ProdutoModel>findByLote(String lote);
+    Optional<ProdutoModel>findByLote(String lote); /* Método para encontrar um produto pelo lote */
 }
