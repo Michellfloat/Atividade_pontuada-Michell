@@ -19,7 +19,7 @@ public class ClienteService {
 
     public ClienteModel salvarClientes(ClienteModel cliente){ /* Método para salvar um cliente */
         if (clienteRepository.findByEmail(cliente.getEmail()).isPresent()) { /* Verifica se já existe um cliente com o mesmo email */
-            throw new RuntimeException("Email já existente..."); /* Lança uma exceção caso o cliente já exista */
+            throw new RuntimeException("Este Email já existe,tente novamente..."); /* Lança uma exceção caso o cliente já exista */
         }
         return clienteRepository.save(cliente); /* Salva o cliente no banco de dados e retorna o cliente salvo */
     }

@@ -19,7 +19,7 @@ public class ProdutoService {
 
     public ProdutoModel salvarProdutos(ProdutoModel produto){ /* Método para salvar um produto */
         if (produtoRepository.findByLote(produto.getLote()).isPresent()) { /* Verifica se já existe um produto com o mesmo lote */
-            throw new RuntimeException("Lote já existente..."); /* Lança uma exceção caso o produto já exista */
+            throw new RuntimeException("Este Lote já existe,tente novamente..."); /* Lança uma exceção caso o produto já exista */
         }
         return produtoRepository.save(produto); /* Salva o produto no banco de dados e retorna o produto salvo */
     }

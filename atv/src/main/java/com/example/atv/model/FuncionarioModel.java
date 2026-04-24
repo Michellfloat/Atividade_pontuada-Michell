@@ -23,7 +23,7 @@ public class FuncionarioModel {
     private String setor;
     private double salario;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false)/*Define a coluna Email como "Unique" */
     private String email;
     private String telefone;
     private String endereco;

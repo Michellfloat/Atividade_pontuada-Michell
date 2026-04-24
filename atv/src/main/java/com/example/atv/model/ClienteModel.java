@@ -17,7 +17,7 @@ public class ClienteModel {
 
     private String nome;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false)/*Define a coluna Email como "Unique" */
     private String email;
     private String telefone;
     private String formaPagamento;

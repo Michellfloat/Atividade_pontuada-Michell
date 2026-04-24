@@ -19,7 +19,7 @@ public class FuncionarioService {
 
     public FuncionarioModel salvarFuncionarios(FuncionarioModel funcionario){ /* Método para salvar um funcionario */
         if (funcionarioRepository.findByEmail(funcionario.getEmail()).isPresent()) { /* Verifica se já existe um funcionario com o mesmo email */
-            throw new RuntimeException("Email já existente..."); /* Lança uma exceção caso o funcionario já exista */
+            throw new RuntimeException("Este Email já existe,tente novamente..."); /* Lança uma exceção caso o funcionario já exista */
         }
         return funcionarioRepository.save(funcionario); /* Salva o funcionario no banco de dados e retorna o funcionario salvo */
     }

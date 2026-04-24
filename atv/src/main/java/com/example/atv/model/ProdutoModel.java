@@ -18,7 +18,7 @@ public class ProdutoModel {
 
     private String nome;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false)/*Define a coluna Email como "Unique" */
     private String lote;
     private String validade;
     private String categoria;

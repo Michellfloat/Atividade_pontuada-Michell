@@ -18,7 +18,7 @@ public class EntregadorService {
 
     public EntregadorModel salvarEntregadores(EntregadorModel entregador){ /* Método para salvar um entregador */
         if (EntregadorRepository.findByEmail(entregador.getEmail()).isPresent()) { /* Verifica se já existe um entregador com o mesmo email */
-            throw new RuntimeException("Email já existente..."); /* Lança uma exceção caso o entregador já exista */
+            throw new RuntimeException("Este Email já existe,tente novamente..."); /* Lança uma exceção caso o entregador já exista */
         }
         return EntregadorRepository.save(entregador); /* Salva o entregador no banco de dados e retorna o entregador salvo */
     }
